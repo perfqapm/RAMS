@@ -10,6 +10,8 @@ const statusOkCount = process.env.statusOkCount;
 const iterationCount = process.env.iterationCount;
 const totalAPIsCount = process.env.totalAPIsCount;
 
+const emailAddress = process.env.EMAIL_IDS;
+
 let totalAssertions = parseInt(assertionErrorCount) + parseInt(assertionOkCount);
 let totalRequestCount = parseInt(statusNotOkCount) + parseInt(statusOkCount);
 // let totalAPIsCount = parseInt(totalRequestCount) / parseInt(iterationCount);
@@ -21,22 +23,22 @@ let params = yargs.argv;
 let emailAddress;
 let gmailPassword;
 
-try {
-  console.log(process.argv);
+// try {
+//   console.log(process.argv);
 
-  // if more than one email ids are there, split
-  let temp = params.emails.replace(' ', '');
-  if (temp.includes(',')) {
-    emailAddress = temp.split(',');
-  } else {
-    emailAddress = temp;
-  }
+//   // if more than one email ids are there, split
+//   let temp = params.emails.replace(' ', '');
+//   if (temp.includes(',')) {
+//     emailAddress = temp.split(',');
+//   } else {
+//     emailAddress = temp;
+//   }
 
-  console.log('Email Ids: ' + emailAddress);
+//   console.log('Email Ids: ' + emailAddress);
 
-} catch (error) {
-  console.log('Error reading the git action variables:' + error.message);
-}
+// } catch (error) {
+//   console.log('Error reading the git action variables:' + error.message);
+// }
 
 // Helper function to generate a CSS class based on sort key
 function getSortClass(sortKey, header) {

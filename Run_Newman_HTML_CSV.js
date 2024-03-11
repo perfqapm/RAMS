@@ -15,13 +15,13 @@ let statusOkCount = 0;
 
 let params = yargs.argv;
 
-let sCollectionURL;
-let iCount;
-let sEnvironmentJson;
-let iRequestTimeout;
+// let sCollectionURL;
+// let iCount;
+// let sEnvironmentJson;
+// let iRequestTimeout;
 let gitUrl;
 let gitRunid;
-let inputDataFilePath;
+// let inputDataFilePath;
 
 // try {
 //     console.log(process.argv);

@@ -2,11 +2,16 @@ const newman = require('newman');
 const yargs = require('yargs');
 
 const sCollectionURL = process.env.COLLECTION_URL_OR_JSON;
+console.log(sCollectionURL);
 const iRequestTimeout = process.env.REQUEST_TIMEOUT;
+console.log(iRequestTimeout);
 // const EMAIL_IDS = process.env.EMAIL_IDS;
 const iCount = process.env.ITERATION_COUNT;
+console.log(iCount);
 const sEnvironmentJson = process.env.ENVIRONMENT_JSON;
+console.log(sEnvironmentJson);
 const inputDataFilePath = process.env.ITERATION_DATA;
+console.log(inputDataFilePath);
 
 let assertionErrorCount = 0;
 let assertionOkCount = 0;

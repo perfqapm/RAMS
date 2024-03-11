@@ -1,0 +1,134 @@
+name: RAMS_Mail_HTML_CSV
+
+env:
+  COLLECTION_URL_OR_JSON: https://api.postman.com/collections/27195714-18035154-f196-49ed-8c75-3cbbe046befb?access_key=PMAT-01HQQ1DZPP1HTM3THKKJQYMYXP
+  REQUEST_TIMEOUT: 10000
+  EMIAL_IDS: lokeshwar.reddy@robosoftin.com
+  ITERATION_COUNT: 2
+  ENVIRONMENT_JSON: ''
+  ITERATION_DATA: './TEST_INPUT.csv'
+
+on:
+  # schedule:
+  # - cron: '0 3 * * 1-5'
+
+  #   push:
+  #     branches:
+  #       - main
+
+  workflow_dispatch:
+    inputs:
+      collectionURL:
+        description: 'Collection URL or Json file. [E.g ReqRes.postman_collection.json]'
+        required: true
+        default: '$COLLECTION_URL_OR_JSON'
+      iteratorCnt:
+        description: 'Iteration count'
+        required: true
+        default: $ITERATION_COUNT
+      environmentJson:
+        description: 'Environment JSON file( *optional ). [E.g workspace.postman_globals.json]'
+        required: true
+        default: $ENVIRONMENT_JSON
+      iRequestTimeout:
+        description: 'Request wait timeout'
+        required: true
+        default: $REQUEST_TIMEOUT
+      emailIds:
+        description: 'Notification email ids. Comma(,) separated, no spaces. [E.g "ram@xzy.in,sam@xyz.in"]'
+        required: true
+        default: $EMIAL_IDS
+      iterationData:
+        description: 'External User input file'
+        required: true
+        default: $ITERATION_DATA
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install packages
+        run: |
+          npm i newman-reporter-htmlextra
+          npm i newman-reporter-csv
+          npm install --save dotenv
+          npm i nodemailer
+          npm i csv-parser
+          npm i moment-timezone
+          npm i yargs
+
+      #     - name: Copy file
+      #       run: |
+      #         mkdir -p ${{ github.workspace }}/Postman/files
+      #         $git cp junitsampler_tutorial.pdf ${{ github.workspace }}/Postman/files
+      #         cd ${{ github.workspace }}/Postman/files
+      #         ls
+
+
+      # - name: List Artifacts
+      #   id: list_artifacts
+      #   run: |
+      #     ARTIFACTS=$(curl -sS -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+      #       "https://api.github.com/repos/${{ github.repository }}/actions/artifacts" | \
+      #       jq -r '.artifacts | if length > 0 then sort_by(.created_at) | reverse | .[].name else empty end' | \
+      #       head -n 3)
+      #     echo "::set-output name=artifacts::$ARTIFACTS"
+
+      # - name: Download Artifacts
+      #   run: |
+      #     if [ -n "${{ steps.list_artifacts.outputs.artifacts }}" ]; then
+      #       for ARTIFACT in ${{ steps.list_artifacts.outputs.artifacts }}; do
+      #         echo "Downloading $ARTIFACT..."
+      #         curl -sS -L -o "$ARTIFACT.zip" \
+      #           -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+      #           "https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT.zip"
+      #       done
+      #     else
+      #       echo "No artifacts found."
+      #     fi
+
+
+      - name: Run JS with args
+        run: |
+          node Run_Newman_HTML_CSV.js --curl=${{ inputs.collectionURL || '$COLLECTION_URL_OR_JSON' }} --icnt=${{ inputs.iteratorCnt || '$ITERATION_COUNT' }} --ejson=${{ inputs.environmentJson || '$ENVIRONMENT_JSON' }} --input=${{ inputs.iterationData || '$ITERATION_DATA' }} --timeout=${{ inputs.iRequestTimeout || '$REQUEST_TIMEOUT' }} --gurl=${{ github.repositoryUrl }} --grunid=${{ github.run_id }}
+          ls
+          ifconfig -a
+          $ wget -qO- ifconfig.me
+
+      - uses: actions/upload-artifact@v3.1.2
+        with:
+          name: ARTIFACT
+          path: newman
+
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: ARTIFACT
+
+      #     - name: Display structure of downloaded files
+      #       run: ls -R
+      - name: Check file
+        run: |
+          cd newman
+          $git mv -v *.html HTMLReport.html
+          $git mv -v *.csv CSVReport.csv
+          ls
+          # cd $GITHUB_WORKSPACE
+          # mkdir -p previousReports
+          # cp $GITHUB_WORKSPACE/newman/CSVReport.csv $GITHUB_WORKSPACE/previousReports/CSVReport_1.csv
+          # cd $GITHUB_WORKSPACE/previousReports
+          # ls
+
+
+      - name: Run JS with args
+        run: |
+          node Run_StartMail_HTML_CSV.js --emails=${{ inputs.emailIds || '$EMIAL_IDS' }}
+          ls
+
+      - name: Run JS with args
+        run: |
+          node Run_TriggerMail_HTML_CSV.js --emails=${{ inputs.emailIds || '$EMIAL_IDS' }}
+          ls

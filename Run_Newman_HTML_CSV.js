@@ -1,6 +1,13 @@
 const newman = require('newman');
 const yargs = require('yargs');
 
+const sCollectionURL = process.env.COLLECTION_URL_OR_JSON;
+const iRequestTimeout = process.env.REQUEST_TIMEOUT;
+// const EMAIL_IDS = process.env.EMAIL_IDS;
+const iCount = process.env.ITERATION_COUNT;
+const sEnvironmentJson = process.env.ENVIRONMENT_JSON;
+const inputDataFilePath = process.env.ITERATION_DATA;
+
 let assertionErrorCount = 0;
 let assertionOkCount = 0;
 let statusNotOkCount = 0;
@@ -16,23 +23,23 @@ let gitUrl;
 let gitRunid;
 let inputDataFilePath;
 
-try {
-    console.log(process.argv);
-    sCollectionURL = params.curl;
-    iCount = parseInt(params.icnt) || 1;
-    sEnvironmentJson = params.ejson;
-    iRequestTimeout = parseInt(params.timeout);
-    gitUrl = params.gurl;
-    gitRunid = params.grunid;
-    inputDataFilePath = params.input;
+// try {
+//     console.log(process.argv);
+//     sCollectionURL = params.curl;
+//     iCount = parseInt(params.icnt) || 1;
+//     sEnvironmentJson = params.ejson;
+//     iRequestTimeout = parseInt(params.timeout);
+//     gitUrl = params.gurl;
+//     gitRunid = params.grunid;
+//     inputDataFilePath = params.input;
     
-    console.log('Iteration count: ' + iCount);
-    console.log('Environment JSON: ' + sEnvironmentJson);
-    console.log('Collection URL: ' + sCollectionURL);
+//     console.log('Iteration count: ' + iCount);
+//     console.log('Environment JSON: ' + sEnvironmentJson);
+//     console.log('Collection URL: ' + sCollectionURL);
     
-} catch (error) {
-    console.log('Error reading the git action variables:' + error.message);
-}
+// } catch (error) {
+//     console.log('Error reading the git action variables:' + error.message);
+// }
 
 async function runNewman() {
     // call newman.run to pass `options` object and wait for callback

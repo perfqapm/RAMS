@@ -20,7 +20,7 @@ const yargs = require('yargs');
 
 let params = yargs.argv;
 
-let emailAddress;
+// let emailAddress;
 let gmailPassword;
 
 // try {

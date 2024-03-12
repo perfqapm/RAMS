@@ -4,10 +4,10 @@ require('dotenv').config({ path: './.env' });
 
 const sCollectionURL = "https://api.postman.com/collections/27195714-18035154-f196-49ed-8c75-3cbbe046befb?access_key=PMAT-01HQQ1DZPP1HTM3THKKJQYMYXP";
 console.log(sCollectionURL);
-const iRequestTimeout = process.env.REQUEST_TIMEOUT;
+const iRequestTimeout = parseInt(process.env.REQUEST_TIMEOUT);
 console.log(iRequestTimeout);
 // const EMAIL_IDS = process.env.EMAIL_IDS;
-const iCount = process.env.ITERATION_COUNT;
+const iCount = parseInt(process.env.ITERATION_COUNT);
 console.log(iCount);
 const sEnvironmentJson = process.env.ENVIRONMENT_JSON;
 console.log(sEnvironmentJson);
@@ -53,11 +53,9 @@ async function runNewman() {
         collection: sCollectionURL,
         reporters: ['htmlextra', 'csv'],  // cli, json, junit, progress and emojitrain
         iterationCount: iCount,
-        console.log(iCount);
         iterationData: inputDataFilePath,
         environment: sEnvironmentJson,
         timeoutRequest: iRequestTimeout,
-        console.log(iRequestTimeout);
         reporter: {
             htmlextra: {
                 browserTitle: "Execution report",

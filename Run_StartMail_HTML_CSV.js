@@ -11,14 +11,15 @@ const iterationCount = process.env.iterationCount;
 const totalAPIsCount = process.env.totalAPIsCount;
 
 const emailAddress = process.env.EMAIL_IDS;
+conole.log(emailAddress);
 
 let totalAssertions = parseInt(assertionErrorCount) + parseInt(assertionOkCount);
 let totalRequestCount = parseInt(statusNotOkCount) + parseInt(statusOkCount);
 // let totalAPIsCount = parseInt(totalRequestCount) / parseInt(iterationCount);
 
-const yargs = require('yargs');
+// const yargs = require('yargs');
 
-let params = yargs.argv;
+// let params = yargs.argv;
 
 // let emailAddress;
 let gmailPassword;
@@ -159,7 +160,7 @@ function sendEmail(assertionErrorCount, statusNotOkCount, assertionOkCount, stat
 
         const mailOptions = {
           from: 'ramsnotification@gmail.com',
-          to: 'emailAddress',
+          to: emailAddress,
           subject: '[API/WebServices Monitoring Solution] Run Status ! ' + timestamp,
           html: `<html><body>${AdditionalhtmlContent}${htmlTableResponseTime}${htmlTableCode}</body></html>`,
           attachments: attachmentPaths.map((path) => ({ path })),

@@ -112,7 +112,7 @@ async function runNewman() {
 const fs = require('fs');
 
 // Read the existing .env file
-const envFilePath = '.env';
+const envFilePath = '1.env';
 const envFileContent = fs.readFileSync(envFilePath, 'utf8');
 
 // Define the dynamic variable and its value

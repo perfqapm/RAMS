@@ -53,9 +53,11 @@ async function runNewman() {
         collection: sCollectionURL,
         reporters: ['htmlextra', 'csv'],  // cli, json, junit, progress and emojitrain
         iterationCount: iCount,
+        console.log(iCount);
         iterationData: inputDataFilePath,
         environment: sEnvironmentJson,
         timeoutRequest: iRequestTimeout,
+        console.log(iRequestTimeout);
         reporter: {
             htmlextra: {
                 browserTitle: "Execution report",

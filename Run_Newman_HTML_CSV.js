@@ -2,7 +2,7 @@ const newman = require('newman');
 const yargs = require('yargs');
 require('dotenv').config({ path: './.env' });
 
-const sCollectionURL = "https://api.postman.com/collections/27195714-18035154-f196-49ed-8c75-3cbbe046befb?access_key=PMAT-01HQQ1DZPP1HTM3THKKJQYMYXP";
+const sCollectionURL = process.env.COLLECTION_URL_OR_JSON;
 console.log(sCollectionURL);
 const iRequestTimeout = parseInt(process.env.REQUEST_TIMEOUT);
 console.log(iRequestTimeout);

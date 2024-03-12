@@ -91,6 +91,11 @@ jobs:
       #     fi
 
 
+      - name: Read Inputs
+        run: |
+          node Run_Inputs.js
+      
+      
       - name: Run JS with args
         run: |
           node Run_Newman_HTML_CSV.js --curl=${{ inputs.collectionURL || '$COLLECTION_URL_OR_JSON' }} --icnt=${{ inputs.iteratorCnt || '$ITERATION_COUNT' }} --ejson=${{ inputs.environmentJson || '$ENVIRONMENT_JSON' }} --input=${{ inputs.iterationData || '$ITERATION_DATA' }} --timeout=${{ inputs.iRequestTimeout || '$REQUEST_TIMEOUT' }} --gurl=${{ github.repositoryUrl }} --grunid=${{ github.run_id }}

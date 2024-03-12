@@ -1,33 +1,22 @@
 const fs = require('fs');
 require('dotenv').config();
 
-// Read variables from the text file
-fs.readFile('variables.txt', 'utf8', (err, data) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-
-  // Split data into lines
-  const lines = data.split('\n');
-
-  // Parse key-value pairs and write to .env file
-  const envData = lines.reduce((acc, line) => {
-    const [key, value] = line.split('=');
-    if (key && value) {
-      // Replace '\=' with '=' in the value
-      const actualValue = value.replace('\\=', '=');
-      acc += `${key.trim()}=${actualValue.trim()}\n`;
-    }
-    return acc;
-  }, '');
-
-  // Write to .env file
-  fs.writeFile('.env', envData, (err) => {
+// Read the content of the .txt file
+fs.readFile('./input.txt', 'utf8', (err, data) => {
     if (err) {
-      console.error(err);
-      return;
+        console.error(err);
+        return;
     }
-    console.log('Variables written to .env file successfully');
-  });
+
+    // Split the content by newlines
+    const lines = data.split('\n');
+
+    // Write each line to the .env file
+    const stream = fs.createWriteStream('./output.env', { flags: 'a' });
+    lines.forEach(line => {
+        stream.write(line.trim() + '\n');
+    });
+
+    // Close the stream
+    stream.end();
 });

@@ -1,11 +1,11 @@
 name: RAMS_Mail_HTML_CSV
 
-env:
+# env:
   # COLLECTION_URL_OR_JSON: https://api.postman.com/collections/27195714-18035154-f196-49ed-8c75-3cbbe046befb?access_key=PMAT-01HQQ1DZPP1HTM3THKKJQYMYXP
   # REQUEST_TIMEOUT: 10000
   # EMIAL_IDS: lokeshwar.reddy@robosoftin.com
   # ITERATION_COUNT: 2
-  ENVIRONMENT_JSON: ''
+  # ENVIRONMENT_JSON: ''
   # ITERATION_DATA: './TEST_INPUT.csv'
 
 on:

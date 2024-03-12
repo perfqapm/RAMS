@@ -10,8 +10,8 @@ const statusOkCount = process.env.statusOkCount;
 const iterationCount = process.env.iterationCount;
 const totalAPIsCount = process.env.totalAPIsCount;
 
-const EMAIL_IDS = process.env.EMAIL_IDS;
-conole.log(EMAIL_IDS);
+const emailAddress = process.env.EMAIL_IDS;
+console.log(emailAddress);
 
 let totalAssertions = parseInt(assertionErrorCount) + parseInt(assertionOkCount);
 let totalRequestCount = parseInt(statusNotOkCount) + parseInt(statusOkCount);
@@ -160,7 +160,7 @@ function sendEmail(assertionErrorCount, statusNotOkCount, assertionOkCount, stat
 
         const mailOptions = {
           from: 'ramsnotification@gmail.com',
-          to: EMAIL_IDS,
+          to: emailAddress,
           subject: '[API/WebServices Monitoring Solution] Run Status ! ' + timestamp,
           html: `<html><body>${AdditionalhtmlContent}${htmlTableResponseTime}${htmlTableCode}</body></html>`,
           attachments: attachmentPaths.map((path) => ({ path })),

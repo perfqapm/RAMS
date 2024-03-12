@@ -1,6 +1,6 @@
 const newman = require('newman');
 const yargs = require('yargs');
-require('dotenv').config({ path: './.env' });
+require('dotenv').config({ path: './1.env' });
 
 const sCollectionURL = "https://api.postman.com/collections/27195714-18035154-f196-49ed-8c75-3cbbe046befb?access_key=PMAT-01HQQ1DZPP1HTM3THKKJQYMYXP";
 console.log(sCollectionURL);

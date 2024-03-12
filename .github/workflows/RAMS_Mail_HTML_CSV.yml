@@ -101,7 +101,6 @@ jobs:
           node Run_Newman_HTML_CSV.js --curl=${{ inputs.collectionURL || '$COLLECTION_URL_OR_JSON' }} --icnt=${{ inputs.iteratorCnt || '$ITERATION_COUNT' }} --ejson=${{ inputs.environmentJson || '$ENVIRONMENT_JSON' }} --input=${{ inputs.iterationData || '$ITERATION_DATA' }} --timeout=${{ inputs.iRequestTimeout || '$REQUEST_TIMEOUT' }} --gurl=${{ github.repositoryUrl }} --grunid=${{ github.run_id }}
           ls
           ifconfig -a
-          $ wget -qO- ifconfig.me
 
       - uses: actions/upload-artifact@v3.1.2
         with:

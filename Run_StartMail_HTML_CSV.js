@@ -3,12 +3,12 @@ const fs = require('fs');
 const csvParser = require('csv-parser');
 const moment = require('moment-timezone');
 require('dotenv').config({ path: './.env' });
-const assertionErrorCount = process.env.assertionErrorCount;
-const assertionOkCount = process.env.assertionOkCount;
-const statusNotOkCount = process.env.statusNotOkCount;
-const statusOkCount = process.env.statusOkCount;
-const iterationCount = process.env.iterationCount;
-const totalAPIsCount = process.env.totalAPIsCount;
+const assertionErrorCount = parseInt(process.env.assertionErrorCount);
+const assertionOkCount = parseInt(process.env.assertionOkCount);
+const statusNotOkCount = parseInt(process.env.statusNotOkCount);
+const statusOkCount = parseInt(process.env.statusOkCount);
+const iterationCount = parseInt(process.env.iterationCount);
+const totalAPIsCount = parseInt(process.env.totalAPIsCount);
 console.log(totalAPIsCount);
 
 const emailAddress = process.env.EMAIL_IDS;

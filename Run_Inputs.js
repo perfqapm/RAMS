@@ -15,7 +15,9 @@ fs.readFile('variables.txt', 'utf8', (err, data) => {
   const envData = lines.reduce((acc, line) => {
     const [key, value] = line.split('=');
     if (key && value) {
-      acc += `${key.trim()}=${value.trim()}\n`;
+      // Replace '\=' with '=' in the value
+      const actualValue = value.replace('\\=', '=');
+      acc += `${key.trim()}=${actualValue.trim()}\n`;
     }
     return acc;
   }, '');

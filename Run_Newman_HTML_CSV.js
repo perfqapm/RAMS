@@ -124,8 +124,8 @@ const dynamicVariableName2 = 'assertionOkCount';
 const dynamicVariableValue2 = assertionOkCount; 
 const dynamicVariableName3 = 'statusOkCount';
 const dynamicVariableValue3 = statusOkCount;
-const dynamicVariableName4 = 'iterationCount';
-const dynamicVariableValue4 = iCount;
+const dynamicVariableName4 = 'EMAIL_IDS';
+const dynamicVariableValue4 = EMAIL_IDS;
 const dynamicVariableName5 = 'totalAPIsCount';
 const dynamicVariableValue5 = totalAPIsCount;
 

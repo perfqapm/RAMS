@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const fs = require('fs');
 const csvParser = require('csv-parser');
 const moment = require('moment-timezone');
-require('dotenv').config({ path: './.env' });
+require('dotenv').config({ path: './1.env' });
 const assertionErrorCount = process.env.assertionErrorCount;
 const assertionOkCount = process.env.assertionOkCount;
 const statusNotOkCount = process.env.statusNotOkCount;

@@ -1,5 +1,6 @@
 const newman = require('newman');
 const yargs = require('yargs');
+require('dotenv').config({ path: './.env' });
 
 const sCollectionURL = process.env.COLLECTION_URL_OR_JSON;
 console.log(sCollectionURL);

@@ -6,7 +6,8 @@ const sCollectionURL = "https://api.postman.com/collections/27195714-18035154-f1
 console.log(sCollectionURL);
 const iRequestTimeout = parseInt(process.env.REQUEST_TIMEOUT);
 console.log(iRequestTimeout);
-// const EMAIL_IDS = process.env.EMAIL_IDS;
+const EMAIL_IDS = process.env.EMAIL_IDS;
+console.log(EMAIL_IDS);
 const iCount = parseInt(process.env.ITERATION_COUNT);
 console.log(iCount);
 const sEnvironmentJson = process.env.ENVIRONMENT_JSON;

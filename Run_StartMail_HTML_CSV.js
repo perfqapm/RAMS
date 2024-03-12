@@ -9,12 +9,15 @@ const statusNotOkCount = process.env.statusNotOkCount;
 const statusOkCount = process.env.statusOkCount;
 const iterationCount = process.env.iterationCount;
 const totalAPIsCount = process.env.totalAPIsCount;
+console.log(totalAPIsCount);
 
 const emailAddress = process.env.EMAIL_IDS;
 console.log(emailAddress);
 
 let totalAssertions = parseInt(assertionErrorCount) + parseInt(assertionOkCount);
+console.log(totalAssertions);
 let totalRequestCount = parseInt(statusNotOkCount) + parseInt(statusOkCount);
+console.log(totalRequestCount);
 // let totalAPIsCount = parseInt(totalRequestCount) / parseInt(iterationCount);
 
 // const yargs = require('yargs');

@@ -1,5 +1,5 @@
 const sendEmail = require('./Run_StartMail_HTML_CSV.js');
-require('dotenv').config({path: './.env'}); 
+require('dotenv').config({path: './1.env'}); 
 assertionErrorCount = process.env.assertionErrorCount;
 assertionOkCount = process.env.assertionOkCount;
 statusNotOkCount = process.env.statusNotOkCount;

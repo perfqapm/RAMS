@@ -106,6 +106,7 @@ async function runNewman() {
     const totalRequestCount = summary.run.stats.requests.total;
     console.log(`Number of requests during execution: ${totalRequestCount}`);
     let totalAPIsCount = parseInt(totalRequestCount) / iCount;
+    console.log(`Number of totalAPIsCount: ${totalAPIsCount}`);
 
 const fs = require('fs');
 

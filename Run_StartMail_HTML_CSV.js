@@ -159,7 +159,7 @@ function sendEmail(assertionErrorCount, statusNotOkCount, assertionOkCount, stat
 
         const mailOptions = {
           from: 'ramsnotification@gmail.com',
-          to: emailAddress,
+          to: 'emailAddress',
           subject: '[API/WebServices Monitoring Solution] Run Status ! ' + timestamp,
           html: `<html><body>${AdditionalhtmlContent}${htmlTableResponseTime}${htmlTableCode}</body></html>`,
           attachments: attachmentPaths.map((path) => ({ path })),

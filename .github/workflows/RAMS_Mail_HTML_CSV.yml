@@ -120,6 +120,7 @@ jobs:
           $git mv -v *.html HTMLReport.html
           $git mv -v *.csv CSVReport.csv
           ls
+      
           # cd $GITHUB_WORKSPACE
           # mkdir -p previousReports
           # cp $GITHUB_WORKSPACE/newman/CSVReport.csv $GITHUB_WORKSPACE/previousReports/CSVReport_1.csv
@@ -127,6 +128,20 @@ jobs:
           # ls
 
 
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install matplotlib
+
+      - name: Process CSV and generate pie chart
+        run: |
+          python python.py
+      
       - name: Run JS with args
         run: |
           node Run_StartMail_HTML_CSV.js --emails=${{ inputs.emailIds || '$EMIAL_IDS' }}

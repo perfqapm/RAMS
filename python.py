@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import csv
 
 # Path to the CSV file
-csv_file_path = 'D:\New folder\data.csv'
+csv_file_path = './data.csv'
 
 # Read CSV file and extract data
 labels = []

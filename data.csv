@@ -1,0 +1,11 @@
+iteration,collectionName,requestName,method,url,status,code,responseTime,responseSize,executed,failed,skipped,totalAssertions,executedCount,failedCount,skippedCount
+"1","RAMS_COLLECTION","Page_Num","GET","reqres.in/api/users?page=","OK","200","656","996","Status code is 200, response should have total_pages","first_name test",,"3","2","1","0"
+"1","RAMS_COLLECTION","Create_User","POST","reqres.in/api/users","OK","200","100","996","Status code is 200",,,"1","1","0","0"
+"1","RAMS_COLLECTION","Create_User_Update","PUT","reqres.in/api/users/2","OK","200","89","280","Status code is 200",,,"1","1","0","0"
+"1","RAMS_COLLECTION","User_Available","GET","reqres.in/api/unknown/23","Not Found","404","359","2",,"Status code is 200",,"1","0","1","0"
+"1","RAMS_COLLECTION","File_Upload","POST","https://postman-echo.com/post?foo1=bar1","OK","200","1047","673","Status code is 200",,,"1","1","0","0"
+"2","RAMS_COLLECTION","Page_Num","GET","reqres.in/api/users?page=","OK","200","91","996","Status code is 200, response should have total_pages","first_name test",,"3","2","1","0"
+"2","RAMS_COLLECTION","Create_User","POST","reqres.in/api/users","OK","200","155","996","Status code is 200",,,"1","1","0","0"
+"2","RAMS_COLLECTION","Create_User_Update","PUT","reqres.in/api/users/2","OK","200","191","280","Status code is 200",,,"1","1","0","0"
+"2","RAMS_COLLECTION","User_Available","GET","reqres.in/api/unknown/23","Not Found","404","121","2",,"Status code is 200",,"1","0","1","0"
+"2","RAMS_COLLECTION","File_Upload","POST","https://postman-echo.com/post?foo1=bar1","OK","200","288","765","Status code is 200",,,"1","1","0","0"

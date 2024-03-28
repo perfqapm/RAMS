@@ -12,7 +12,7 @@ with open(csv_file_path, 'r') as csv_file:
     next(csv_reader)  # Skip header row
     for row in csv_reader:
         labels.append(row[0])
-        sizes.append(float(row[1]))
+        sizes.append(float(row[7]))
 
 # Create pie chart
 plt.figure(figsize=(10, 8))
